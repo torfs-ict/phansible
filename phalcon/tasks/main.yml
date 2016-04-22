@@ -28,9 +28,8 @@
   become: yes
   become_user: vagrant
 
-- name: Symlink developer tools
+- name: Add Composer bin directory to $PATH
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?{{ item }}).*?)(["]*)$' line="PATH=\1\2:{{ item }}\3"
   when: php.ppa == "php5"
-  file:
-    src: /home/vagrant/.composer/vendor/bin/phalcon.php
-    dest: /usr/bin/phalcon
-    state: link
+  with_items:
+  - "~/.composer/vendor/bin"

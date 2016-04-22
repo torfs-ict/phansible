@@ -1,0 +1,36 @@
+---
+- name: Add ppa Repository
+  sudo: yes
+  apt_repository: repo=ppa:phalcon/stable
+  when: php.ppa == "php5"
+
+- name: Update apt
+  sudo: yes
+  apt: update_cache=yes
+  when: php.ppa == "php5"
+
+- name: Install PHP extension
+  sudo: yes
+  apt: pkg={{item}} state=latest
+  when: php.ppa == "php5"
+  with_items:
+    - php5-phalcon
+
+- name: Enable extension
+  shell: php5enmod php-phalcon
+  when: php.ppa == "php5"
+  notify:
+    - restart php5-fpm
+
+- name: Install developer tools
+  shell: composer global require phalcon/devtools:dev-master
+  when: php.ppa == "php5"
+  become: yes
+  become_user: vagrant
+
+- name: Symlink developer tools
+  when: php.ppa == "php5"
+  file:
+    src: /home/vagrant/.composer/vendor/bin/phalcon.php
+    dest: /usr/bin/phalcon
+    state: link

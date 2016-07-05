@@ -6,18 +6,15 @@
     - libpcre3-dev
     - libjson0
     - libjson0-dev
-    - "{{ php7.version }}-dev"
+    - gcc
+    - make
+    - build-essential
+    - php7.0-dev
+    - php7.0-zip
   become: yes
   become_user: root
 
-- name: Zephir | Download from Github
-  git: repo=https://github.com/phalcon/zephir.git dest=/home/vagrant/zephir
+- name: Zephir | Install composer package
+  shell: composer global require "phalcon/zephir:dev-master"
   become: yes
   become_user: vagrant
-
-- name: Zephir | Install
-  shell: ./install -c
-  args:
-    chdir: /home/vagrant/zephir
-  become: yes
-  become_user: root

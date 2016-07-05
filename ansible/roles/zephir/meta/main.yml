@@ -1,3 +1,4 @@
 ---
 dependencies:
   - { role: php7 }
+  - { role: composer }

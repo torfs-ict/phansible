@@ -24,3 +24,5 @@
   apt: pkg={{ item }} state=latest
   with_items: "{{ php7.extensions }}"
   when: php7.extensions is defined
+
+- include: pecl.yml

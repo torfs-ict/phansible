@@ -1,7 +1,7 @@
 ---
 server:
     install: '1'
-    packages: [git, imagemagick, vim, nodejs, npm]
+    packages: [git, imagemagick, vim, nodejs, npm, pkg-config, libssl-dev, libsslcommon2-dev]
     timezone: Europe/Brussels
     locale: nl_NL.UTF-8
 vagrant_local:
@@ -15,4 +15,5 @@ mongodb:
     install: '1'
 php7:
     extensions: [php7.0-curl, php7.0-gd, php7.0-intl, php7.0-mbstring, php7.0-tidy, php7.0-xml, php7.0-zip]
+    pecl: [mongodb]
 

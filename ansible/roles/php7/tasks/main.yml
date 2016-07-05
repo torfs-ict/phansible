@@ -14,9 +14,9 @@
   become_method: sudo
   apt: pkg={{item}} state=latest
   with_items:
-    - "{{ php7.version }}"
-    - "{{ php7.version }}-cli"
-    - "{{ php7.version }}-fpm"
+    - php7.0
+    - php7.0-cli
+    - php7.0-fpm
 
 - name: Install PHP extensions
   become: yes

@@ -1,29 +1,23 @@
 ---
-- name: Install dependencies
+- name: Zephir | Install dependencies
   apt: pkg={{ item }} state=latest
   with_items:
     - re2c
     - libpcre3-dev
     - libjson0
     - libjson0-dev
-    - php5-dev
+    - "{{ php7.version }}-dev"
   become: yes
   become_user: root
 
-- name: Download composer package
-  shell: composer global require phalcon/zephir
+- name: Zephir | Download from Github
+  git: repo=https://github.com/phalcon/zephir.git dest=/home/vagrant/zephir
   become: yes
   become_user: vagrant
 
-- name: Add Composer bin directory to $PATH
-  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?{{ item }}).*?)(["]*)$' line="PATH=\1\2:{{ item }}\3"
-  with_items:
-    - "~/.composer/vendor/bin"
-
-- name: Make Zephir installer executable
-  file: path=/home/vagrant/.composer/vendor/phalcon/zephir/install mode=0755
-
-- name: Install Zephir
-  shell: ./install chdir=/home/vagrant/.composer/vendor/phalcon/zephir
+- name: Zephir | Install
+  shell: ./install -c
+  args:
+    chdir: /home/vagrant/zephir
   become: yes
   become_user: root

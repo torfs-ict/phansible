@@ -9,5 +9,6 @@
     - app
     - git-prompt
     - php7
+    - composer
     - nginx
     - mongodb

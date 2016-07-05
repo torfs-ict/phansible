@@ -7,3 +7,7 @@
     - server
     - vagrant_local
     - app
+    - git-prompt
+    - php7
+    - nginx
+    - mongodb

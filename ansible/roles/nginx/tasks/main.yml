@@ -1,0 +1,11 @@
+---
+- name: Install Nginx
+  become: yes
+  become_method: sudo
+  apt: pkg=nginx state=latest
+
+- name: Change default nginx site
+  become: yes
+  become_method: sudo
+  template: src=default.tpl dest=/etc/nginx/sites-available/default
+  notify: restart nginx

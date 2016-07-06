@@ -1,0 +1,21 @@
+{
+    "name": "torfsict/phansible-builder",
+    "authors": [
+        {
+            "name": "Kristof Torfs",
+            "email": "kristof@torfs.org"
+        }
+    ],
+    "require": {
+        "symfony/yaml": "^3.1",
+        "symfony/filesystem": "^3.1"
+    },
+    "require-dev": {
+        "twbs/bootstrap": "v3.3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Builder\\": "src/"
+        }
+    }
+}

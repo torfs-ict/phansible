@@ -12,7 +12,8 @@
       "nginx": "",
       "mongodb": "",
       "zephir": "",
-      "phalcon": ""
+      "phalcon": "",
+      "wkhtmltopdf": ""
     }
   },
   "system": {

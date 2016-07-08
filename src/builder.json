@@ -8,7 +8,7 @@
     "optional": {
       "git-prompt": "git",
       "php7": "",
-      "composer": "",
+      "composer": "php7",
       "nginx": "",
       "mongodb": "",
       "zephir": "",

@@ -1,12 +1,12 @@
 - name: Phalcon | Download from Github
-  git: repo=https://github.com/phalcon/cphalcon.git dest=/home/vagrant/phalcon version=2.1.x
+  git: repo=https://github.com/phalcon/cphalcon.git dest=/home/{{ app.username }}/phalcon
   become: yes
-  become_user: vagrant
+  become_user: "{{ app.username }}"
 
 - name: Phalcon | Build extension
-  shell: /home/vagrant/.composer/vendor/bin/zephir build --backend=ZendEngine3
+  shell: /home/{{ app.username }}/.composer/vendor/bin/zephir build --backend=ZendEngine3
   args:
-    chdir: /home/vagrant/phalcon
+    chdir: /home/{{ app.username }}/phalcon
   become: yes
   become_user: root
 
@@ -23,8 +23,3 @@
   notify:
     - restart php7-fpm
     - restart nginx
-
-- name: Phalcon | Install developer tools
-  shell: composer global require phalcon/devtools:dev-master
-  become: yes
-  become_user: vagrant

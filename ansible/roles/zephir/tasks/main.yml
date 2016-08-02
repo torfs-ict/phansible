@@ -17,4 +17,4 @@
 - name: Zephir | Install composer package
   shell: composer global require "phalcon/zephir:dev-master"
   become: yes
-  become_user: vagrant
+  become_user: "{{ app.username }}"

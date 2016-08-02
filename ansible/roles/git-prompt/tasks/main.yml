@@ -11,4 +11,4 @@
     owner=root group=root mode=0644
 
 - name: Git bash prompt | Add prompt to .bashrc
-  shell: echo ". /etc/profile.d/git-prompt.sh" >> /home/vagrant/.bashrc
+  shell: echo ". /etc/profile.d/git-prompt.sh" >> /home/{{ app.username }}/.bashrc

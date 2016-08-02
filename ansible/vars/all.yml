@@ -8,6 +8,8 @@ vagrant_local:
 nginx:
     docroot: /vagrant
     servername: phansible.vb
+app:
+	username: vagrant
 php7:
     extensions: [php7.0-curl, php7.0-gd, php7.0-intl, php7.0-mbstring, php7.0-tidy, php7.0-xml, php7.0-zip]
     pecl: [mongodb]
